@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTemplatesTable extends Migration
+class CreateCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateTemplatesTable extends Migration
      */
     public function up()
     {
-        Schema::create('templates', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 30)->comment('模板名称');
-            $table->string('image')->comment('模板封面图片');
+            $table->char('color', 7)->default('#ffffff')->comment('纯色色值');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateTemplatesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('templates');
+        Schema::dropIfExists('categories');
     }
 }

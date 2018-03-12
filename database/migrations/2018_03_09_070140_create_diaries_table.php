@@ -20,6 +20,7 @@ class CreateDiariesTable extends Migration
             $table->string('audio')->default('')->comment('音频内容');
             $table->string('images', 1000)->default('')->comment('图片内容, 多选  ,号分隔');
             $table->unsignedInteger('goal_id')->index()->comment('目标id');
+            $table->unsignedInteger('category_id')->index()->comment('目标类别id');
             $table->unsignedInteger('user_id')->index()->comment('用户id');
             $table->timestamps();
         });

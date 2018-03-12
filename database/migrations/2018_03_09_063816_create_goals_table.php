@@ -15,11 +15,11 @@ class CreateGoalsTable extends Migration
     {
         Schema::create('goals', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 30)->comment('目标名称');
+            $table->string('name')->comment('目标名称');
             $table->timestamp('began_at')->nullable()->comment('目标开始时间');
             $table->timestamp('ended_at')->nullable()->comment('结束时间');
-            $table->unsignedInteger('template_id')->comment('模板id');
-            $table->unsignedInteger('user_id')->comment('用户id');
+            $table->unsignedInteger('category_id')->index()->comment('目标类别id');
+            $table->unsignedInteger('user_id')->index()->comment('用户id');
             $table->timestamps();
         });
     }
