@@ -14,6 +14,7 @@ class CreateGoalsTable extends Migration
     public function up()
     {
         Schema::create('goals', function (Blueprint $table) {
+            $table->softDeletes();
             $table->increments('id');
             $table->string('name')->comment('目标名称');
             $table->timestamp('began_at')->nullable()->comment('目标开始时间');

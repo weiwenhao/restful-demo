@@ -15,7 +15,5 @@ $factory->define(\App\Models\Diary::class, function (Faker $faker) {
     for ($i = 0; $i <= mt_rand(1, 8); ++$i) {
         $data['images'][] = $faker->imageUrl();
     }
-    $data['images'] = json_encode($data['images'], JSON_UNESCAPED_SLASHES);
-
     return $data;
 });

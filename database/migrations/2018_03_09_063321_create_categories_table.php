@@ -14,8 +14,10 @@ class CreateCategoriesTable extends Migration
     public function up()
     {
         Schema::create('categories', function (Blueprint $table) {
+            $table->softDeletes();
             $table->increments('id');
-            $table->string('name', 30)->comment('模板名称');
+            $table->string('name', 30)->comment('分类名称');
+            $table->string('description')->default('')->comment('描述');
             $table->char('color', 7)->default('#ffffff')->comment('纯色色值');
             $table->timestamps();
         });

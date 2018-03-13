@@ -14,6 +14,7 @@ class CreateDiariesTable extends Migration
     public function up()
     {
         Schema::create('diaries', function (Blueprint $table) {
+            $table->softDeletes();
             $table->increments('id');
             $table->string('content', 500)->default('')->comment('文本内容');
             $table->string('video')->default('')->comment('音频内容');

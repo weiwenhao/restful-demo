@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Transformers\UserTransformer;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -11,11 +12,12 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return void
      */
-    public function index()
+    public function index(Request $request)
     {
-        dd('index');
+
     }
 
     /**
@@ -37,7 +39,9 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        return User::findOrFail($id);
+        $user = User::findOrFail($id);
+//
+        return $this->response->item($user, new UserTransformer());
     }
 
     /**
