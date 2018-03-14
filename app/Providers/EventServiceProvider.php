@@ -16,6 +16,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\Event' => [
             'App\Listeners\EventListener',
         ],
+//        'Dingo\Api\Event\ResponseWasMorphed' => [
+//            'App\Listeners\AddLinksToMeta'
+//        ]
     ];
 
     /**

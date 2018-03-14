@@ -21,6 +21,7 @@ class CreateGoalsTable extends Migration
             $table->timestamp('ended_at')->nullable()->comment('结束时间');
             $table->unsignedInteger('category_id')->index()->comment('目标类别id');
             $table->unsignedInteger('user_id')->index()->comment('用户id');
+            $table->unsignedInteger('status')->default(2)->comment('0失败/1已完成/2进行中');
             $table->timestamps();
         });
     }

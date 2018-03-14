@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Diary;
 use Dingo\Api\Routing\Helpers;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Collection;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Controller extends BaseController
 {
@@ -20,14 +24,14 @@ class Controller extends BaseController
 //        $query->limit(request('limit', 10));
 
         //排序
-        $query->orderBy(request('sortby', 'id'), request('order', 'desc'));
+        $query->orderBy(request()->get('sort_by', 'id'), request()->get('order', 'desc'));
 
         //字段限制
-        !is_null(request('fields')) && $query->addSelect(explode(',', request('fields')));
+        !is_null(request()->get('fields')) && $query->addSelect(explode(',', request()->get('fields')));
 
         //筛选条件
         foreach ($where as $item) {
-            if (is_null($value = request($item))) {
+            if (is_null($value = request()->get($item))) {
                 continue;
             }
 
@@ -37,6 +41,10 @@ class Controller extends BaseController
             } else {
                 $query->where($item, '=', $value);
             }
+        }
+
+        if ($where && count($query->getQuery()->wheres) === 0) {
+            return new LengthAwarePaginator([], 0, request()->get('pre_page', 15));
         }
 
         //分页

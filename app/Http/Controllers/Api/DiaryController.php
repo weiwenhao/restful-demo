@@ -20,6 +20,7 @@ class DiaryController extends Controller
         return $this->response->paginator($paginator, new DiaryTransformer());
     }
 
+
     public function store(Request $request)
     {
         $data = $request->only(['images', 'audio', 'video', 'content', 'goal_id']);
