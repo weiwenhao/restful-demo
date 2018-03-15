@@ -3,9 +3,8 @@
 namespace App\Http\Transformers;
 
 use App\Models\Diary;
-use League\Fractal\TransformerAbstract;
 
-class DiaryTransformer extends TransformerAbstract
+class DiaryTransformer extends Transformer
 {
     protected $availableIncludes = ['user'];
 

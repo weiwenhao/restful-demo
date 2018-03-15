@@ -23,4 +23,9 @@ class Category extends Model
     {
         return $this->hasMany(Goal::class);
     }
+
+    public function getIsJoinAttribute()
+    {
+        return true;
+    }
 }

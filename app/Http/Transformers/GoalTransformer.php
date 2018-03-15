@@ -3,9 +3,8 @@
 namespace App\Http\Transformers;
 
 use App\Models\Goal;
-use League\Fractal\TransformerAbstract;
 
-class GoalTransformer extends TransformerAbstract
+class GoalTransformer extends Transformer
 {
     protected $availableIncludes = ['new_diary'];
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Resources\CategoryResource;
 use App\Http\Transformers\CategoryTransformer;
 use App\Models\Category;
 use Illuminate\Http\Request;

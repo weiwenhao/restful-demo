@@ -3,7 +3,7 @@
 namespace App\Serializers;
 use League\Fractal\Serializer\ArraySerializer;
 
-class NoDataArraySerializer extends ArraySerializer
+class CustomSerializer extends ArraySerializer
 {
 //    /**
 //     * Serialize a collection.

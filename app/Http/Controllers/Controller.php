@@ -47,6 +47,7 @@ class Controller extends BaseController
             return new LengthAwarePaginator([], 0, request()->get('pre_page', 15));
         }
 
+
         //分页
         return $query->paginate(request()->get('pre_page', 15))->appends(request()->except('page'));
     }

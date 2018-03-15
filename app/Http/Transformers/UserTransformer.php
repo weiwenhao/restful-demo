@@ -3,11 +3,9 @@
 namespace App\Http\Transformers;
 
 use App\Models\User;
-use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 use League\Fractal\ParamBag;
-use League\Fractal\TransformerAbstract;
 
-class UserTransformer extends TransformerAbstract
+class UserTransformer extends Transformer
 {
     protected $availableIncludes = ['diaries', 'total'];
 
