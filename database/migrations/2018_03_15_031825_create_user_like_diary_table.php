@@ -14,8 +14,9 @@ class CreateUserLikeDiaryTable extends Migration
     public function up()
     {
         Schema::create('user_like_diary', function (Blueprint $table) {
-            $table->unsignedInteger('user_id')->index();
-            $table->unsignedInteger('diary_id')->index();
+            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('diary_id');
+            $table->unique(['user_id', 'diary_id']);
         });
     }
 

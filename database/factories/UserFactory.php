@@ -17,6 +17,7 @@ $factory->define(App\Models\User::class, function (Faker $faker) {
     return [
         'avatar' => $faker->imageUrl(200, 200),
         'nickname' => $faker->name,
-        'sex' => mt_rand(0, 2)
+        'sex' => mt_rand(0, 2),
+        'category_id' => mt_rand(1, 8),
     ];
 });

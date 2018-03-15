@@ -20,5 +20,5 @@ $api->version('v1', [
     $api->get('categories/{category_id}/goals', 'GoalController@index')->middleware('param.add');
     $api->get('categories/{category_id}/diaries', 'DiaryController@index')->middleware('param.add');
 
-//    $api->get('categories/{category_id}/users', 'UserController@index')->middleware('param.add'); // 暂时无法跨表获取数据
+    $api->get('categories/{category_id}/users', 'UserController@index')->middleware('param.add');
 });

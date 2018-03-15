@@ -21,7 +21,24 @@ class AddLinksToMeta
 
     public function handle(ResponseWasMorphed $event)
     {
+        $content = $event->response->getContent();
+        isset($content['data']) && $content['data'] = $this->filterNull($content['data']);
+        $event->response->setContent($content);
+    }
 
+    private function filterNull(array $data)
+    {
+        foreach ($data as $key => $value) {
+            if (is_array($value)) {
+                $data[$key] = $this->filterNull($value);
+            } else {
+                if ($value == null) {
+                    unset($data[$key]);
+                }
+            }
+        }
+
+        return $data;
     }
 
     /**

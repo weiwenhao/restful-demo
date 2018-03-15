@@ -11,7 +11,6 @@ class CategoryTransformer extends Transformer
     public function transform(Category $category)
     {
         $data = $category->attributesToArray();
-
         return $data;
     }
 
