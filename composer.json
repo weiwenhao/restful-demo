@@ -6,10 +6,11 @@
     "type": "project",
     "require": {
         "php": ">=7.1.0",
+        "dingo/api": "v2.0.0-alpha2",
+        "encore/laravel-admin": "^1.5",
         "fideloper/proxy": "~4.0",
         "laravel/framework": "5.6.*",
-        "laravel/tinker": "~1.0",
-        "dingo/api": "v2.0.0-alpha2"
+        "laravel/tinker": "~1.0"
     },
     "require-dev": {
         "filp/whoops": "~2.0",
