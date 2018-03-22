@@ -9,6 +9,8 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    protected $hidden = ['updated_at', 'openid'];
+
     public function diaries()
     {
         return $this->hasMany(Diary::class);
@@ -17,5 +19,10 @@ class User extends Authenticatable
     public function newDiary()
     {
         return $this->hasOne(Diary::class)->where('status', 2)->orderBy('created_at', 'desc'); // status = 2进行中
+    }
+
+    public function getOpenidAttribute($value)
+    {
+        return $value;
     }
 }

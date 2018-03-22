@@ -19,6 +19,7 @@ class CreateCategoriesTable extends Migration
             $table->string('name', 30)->comment('分类名称');
             $table->string('description')->default('')->comment('描述');
             $table->unsignedInteger('goal_id')->default(0)->comment('该模板下精选目标');
+            $table->unsignedInteger('user_count')->default(0)->comment('该分类的参与人数');
             $table->char('color', 7)->default('#ffffff')->comment('纯色色值');
             $table->timestamps();
         });

@@ -14,11 +14,12 @@ class DiaryTransformer extends Transformer
             'id' => $diary->id,
             'category_id' => $diary->category_id,
             'content' => $diary->content,
-            'created_at' => $diary->created_at,
+            'created_at' => $diary->created_at->getTimestamp(),
             'goal_id' => $diary->goal_id,
             'images' => (array) $diary->images,
             'audio' => $diary->audio,
-            'video' => $diary->video
+            'video' => $diary->video,
+            'user_id' => $diary->user_id
         ];
     }
 

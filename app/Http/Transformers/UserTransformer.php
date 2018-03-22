@@ -11,7 +11,13 @@ class UserTransformer extends Transformer
 
     public function transform(User $user)
     {
-        return $user->attributesToArray();
+        return [
+            'id' => $user->id,
+            'nickname' => $user->nickname,
+            'kept_days' => $user->kept_days,
+            'openid' => $user->openid,
+            'avatar' => $user->avatar
+        ];
     }
 
     public function includeDiaries(User $user, ParamBag $params = null)
@@ -24,11 +30,5 @@ class UserTransformer extends Transformer
 
         return $this->collection($query->get(), new DiaryTransformer());
     }
-
-    public function includeTotal(User $user)
-    {
-
-    }
-
 //    private function parseWhere()
 }

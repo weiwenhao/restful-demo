@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Diary extends Model
@@ -12,7 +11,7 @@ class Diary extends Model
     protected $dates = ['deleted_at'];
 
     protected $fillable = ['images', 'audio', 'video', 'content', 'goal_id', 'user_id'];
-    protected $hidden = ['updated_at'];
+
     protected $casts = [
       'images' => 'array'
     ];

@@ -19,5 +19,7 @@ $factory->define(App\Models\User::class, function (Faker $faker) {
         'nickname' => $faker->name,
         'sex' => mt_rand(0, 2),
         'category_id' => mt_rand(1, 8),
+        'goal_id' => mt_rand(1, 1000),
+        'kept_days' => mt_rand(1, 100)
     ];
 });

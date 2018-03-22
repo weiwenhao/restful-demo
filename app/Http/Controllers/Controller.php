@@ -43,10 +43,6 @@ class Controller extends BaseController
             }
         }
 
-        if ($where && count($query->getQuery()->wheres) === 0) {
-            return new LengthAwarePaginator([], 0, request()->get('pre_page', 15));
-        }
-
 
         //分页
         return $query->paginate(request()->get('pre_page', 15))->appends(request()->except('page'));

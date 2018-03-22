@@ -22,6 +22,7 @@ class CreateGoalsTable extends Migration
             $table->unsignedInteger('category_id')->index()->comment('目标类别id');
             $table->unsignedInteger('user_id')->index()->comment('用户id');
             $table->unsignedInteger('status')->default(2)->comment('0失败/1已完成/2进行中');
+            $table->unsignedInteger('kept_days')->default(0)->comment('当前目标坚持天数');
             $table->timestamps();
         });
     }

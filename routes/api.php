@@ -5,6 +5,8 @@ $api = app('Dingo\Api\Routing\Router');
 $api->version('v1', [
     'namespace' => 'App\Http\Controllers\Api'
 ], function ($api) {
+    \Illuminate\Support\Facades\Auth::login(\App\Models\User::find(1));
+
     $api->resource('users', 'UserController');
     $api->resource('diaries', 'DiaryController');
     $api->resource('goals', 'GoalController');
@@ -18,7 +20,7 @@ $api->version('v1', [
     $api->get('users/{user_id}/diaries', 'DiaryController@index')->middleware('param.add');
 
     $api->get('categories/{category_id}/goals', 'GoalController@index')->middleware('param.add');
+    $api->get('users/{user_id}/goals', 'GoalController@index')->middleware('param.add');
     $api->get('categories/{category_id}/diaries', 'DiaryController@index')->middleware('param.add');
-
     $api->get('categories/{category_id}/users', 'UserController@index')->middleware('param.add');
 });

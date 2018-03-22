@@ -24,6 +24,11 @@ class Category extends Model
         return $this->hasMany(Goal::class);
     }
 
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
+
     public function getIsJoinAttribute()
     {
         return true;

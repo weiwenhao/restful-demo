@@ -32,7 +32,7 @@ class AddLinksToMeta
             if (is_array($value)) {
                 $data[$key] = $this->filterNull($value);
             } else {
-                if ($value == null) {
+                if (is_null($value)) {
                     unset($data[$key]);
                 }
             }
