@@ -199,7 +199,7 @@ return [
     |
     */
 
-    'transformer' => env('API_TRANSFORMER', Dingo\Api\Transformer\Adapter\Fractal::class),
+    'transformer' => env('API_TRANSFORMER', \App\Services\Fractal::class),
 
     /*
     |--------------------------------------------------------------------------

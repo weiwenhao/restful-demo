@@ -13,8 +13,8 @@ $api->version('v1', [
     $api->resource('categories', 'CategoryController');
 
     //点赞日记与取消点赞日记
-    $api->post('diaries/{diaries}/likes', 'DiaryController@store');
-    $api->delete('diaries/{diaries}/likes', 'DiaryController@destroy');
+    $api->post('diaries/{diaries}/likes', 'DiaryLikeController@store');
+    $api->delete('diaries/{diaries}/likes', 'DiaryLikeController@destroy');
 
     $api->get('goals/{goal_id}/diaries', 'DiaryController@index')->middleware('param.add');
     $api->get('users/{user_id}/diaries', 'DiaryController@index')->middleware('param.add');

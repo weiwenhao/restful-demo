@@ -16,6 +16,7 @@ class CreateUserLikeDiaryTable extends Migration
         Schema::create('user_like_diary', function (Blueprint $table) {
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('diary_id');
+            $table->timestamp('created_at')->nullable();
             $table->unique(['user_id', 'diary_id']);
         });
     }
