@@ -12,12 +12,12 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @param Request $request
+     * @param null $query
      * @return \Dingo\Api\Http\Response
      */
-    public function index(Request $request)
+    public function index($query = null)
     {
-        $paginator = $this->parseFilter(User::query(), ['category_id']);
+        $paginator = $this->parseFilter($query ?? User::query(), ['category_id']);
         return $this->response->paginator($paginator, new UserTransformer());
     }
 

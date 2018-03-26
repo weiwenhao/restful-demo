@@ -14,8 +14,7 @@ class CategoryTransformer extends Transformer
 
     public function transform(Category $category)
     {
-        $data = $category->attributesToArray();
-        return array_intersect_key($category->toArray(), $data);
+        return $category->attributesToArray();
     }
 
     public function includeBestDiary(Category $category)

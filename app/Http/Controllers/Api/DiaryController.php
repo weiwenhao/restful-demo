@@ -12,9 +12,9 @@ use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 class DiaryController extends Controller
 {
-    public function index()
+    public function index($query = null)
     {
-        $paginator = $this->parseFilter(Diary::query(), ['user_id', 'category_id', 'goal_id']);
+        $paginator = $this->parseFilter($query ?? Diary::query());
 
         return $this->response->paginator($paginator, new DiaryTransformer());
     }

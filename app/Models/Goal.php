@@ -16,8 +16,8 @@ class Goal extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function newDiary()
+    public function diaries()
     {
-        return $this->hasOne(Diary::class);
+        return $this->hasMany(Diary::class);
     }
 }

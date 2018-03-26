@@ -13,7 +13,7 @@ class DiaryTransformer extends Transformer
 
     public function transform(Diary $diary)
     {
-        $data =  [
+        return [
             'id' => $diary->id,
             'category_id' => $diary->category_id,
             'content' => $diary->content,
@@ -22,10 +22,8 @@ class DiaryTransformer extends Transformer
             'images' => (array) $diary->images,
             'audio' => $diary->audio,
             'video' => $diary->video,
-            'user_id' => (int) $diary->user_id
+            'user_id' => $diary->user_id
         ];
-
-        return array_intersect_key($diary->toArray(), $data);
     }
 
     public function includeUser(Diary $diary)

@@ -10,9 +10,7 @@ class GoalTransformer extends Transformer
 
     public function transform(Goal $goal)
     {
-        $data = $goal->attributesToArray();
-
-        return array_intersect_key($goal->toArray(), $data);
+        return $goal->attributesToArray();
     }
 
     public function includeNewDiary(Goal $goal)

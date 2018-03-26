@@ -11,15 +11,13 @@ class UserTransformer extends Transformer
 
     public function transform(User $user)
     {
-        $data =  [
+        return [
             'id' => $user->id,
             'nickname' => $user->nickname,
             'kept_days' => $user->kept_days,
             'openid' => $user->openid,
             'avatar' => $user->avatar
         ];
-
-        return array_intersect_key($user->toArray(), $data);
     }
 
     public function includeDiaries(User $user, ParamBag $params = null)

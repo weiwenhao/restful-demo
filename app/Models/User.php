@@ -16,13 +16,13 @@ class User extends Authenticatable
         return $this->hasMany(Diary::class);
     }
 
+    public function goals()
+    {
+        return $this->hasMany(Goal::class);
+    }
+
     public function newDiary()
     {
         return $this->hasOne(Diary::class)->where('status', 2)->orderBy('created_at', 'desc'); // status = 2进行中
-    }
-
-    public function getOpenidAttribute($value)
-    {
-        return $value;
     }
 }

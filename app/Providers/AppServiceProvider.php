@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Diary;
 use App\Serializers\CustomSerializer;
 use Illuminate\Support\ServiceProvider;
 
@@ -14,7 +15,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
     }
 
     /**

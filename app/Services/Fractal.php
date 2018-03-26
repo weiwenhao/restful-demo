@@ -2,9 +2,6 @@
 
 namespace App\Services;
 
-
-use League\Fractal\Manager as FractalManager;
-
 class Fractal extends \Dingo\Api\Transformer\Adapter\Fractal
 {
     /**

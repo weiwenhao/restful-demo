@@ -17,12 +17,8 @@ class Controller extends BaseController
 {
     use Helpers, AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    protected function parseFilter(Builder $query, $where = [])
+    protected function parseFilter($query, $where = [])
     {
-        //偏移 统一使用通配性更加广泛的page分页
-//        $query->offset(request('offset', 0));
-//        $query->limit(request('limit', 10));
-
         //排序
         $query->orderBy(request()->get('sort_by', 'id'), request()->get('order', 'desc'));
 

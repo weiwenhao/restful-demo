@@ -9,9 +9,9 @@ use App\Http\Controllers\Controller;
 
 class GoalController extends Controller
 {
-    public function index()
+    public function index($query = null)
     {
-        $paginator = $this->parseFilter(Goal::query(), ['user_id', 'category_id']);
+        $paginator = $this->parseFilter($query ?? Goal::query(), ['user_id', 'category_id']);
         return $this->response->paginator($paginator, new GoalTransformer());
     }
 

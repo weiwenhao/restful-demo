@@ -15,10 +15,11 @@ class Category extends Model
         return $this->hasOne(Goal::class);
     }
 
+    public function diaries()
+    {
+        return $this->hasMany(Diary::class);
+    }
 
-    /**
-     * 有效的goals
-     */
     public function goals()
     {
         return $this->hasMany(Goal::class);
@@ -27,10 +28,5 @@ class Category extends Model
     public function users()
     {
         return $this->hasMany(User::class);
-    }
-
-    public function getIsJoinAttribute()
-    {
-        return true;
     }
 }
