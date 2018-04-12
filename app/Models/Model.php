@@ -22,4 +22,13 @@ class Model extends EloquentModel
     {
         return strtotime($value);
     }
+
+    /**
+     * @param string $key
+     * @return bool
+     */
+    public function hasAttribute(string $key): bool
+    {
+        return array_has($this->attributes, $key);
+    }
 }

@@ -2,16 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Diary;
 use Dingo\Api\Routing\Helpers;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Support\Collection;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Illuminate\Support\Facades\Cache;
 
 class Controller extends BaseController
 {
@@ -39,8 +36,37 @@ class Controller extends BaseController
             }
         }
 
+        if ($this->isBlacklist($query)) {
+            return new LengthAwarePaginator([], 0, request()->get('pre_page', 15));
+        }
 
         //分页
         return $query->paginate(request()->get('pre_page', 15))->appends(request()->except('page'));
+    }
+
+    /**
+     * sql语句黑名单检测机制检测机制
+     * @param $query
+     * @return bool
+     */
+    private function isBlacklist($query)
+    {
+        $limit = 100;
+
+        if (request('pre_page') && request('pre_page') < $limit) {
+            return false;
+        }
+
+        $key = 'sql:'. $query->toSql();
+
+        if (Cache::has($key)) {
+            return true;
+        }
+        if ($query->count() > $limit) {
+            Cache::forever($key, date('Y-m-d H:i:s'));
+            return true;
+        }
+
+        return false;
     }
 }

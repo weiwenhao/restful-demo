@@ -12,6 +12,7 @@
 */
 
 Route::get('/', function () {
-    dd(\DB::table('user_like_diary')->where('user_id', null)->pluck('diary_id')->toArray());
     return view('welcome');
 });
+
+Route::get('/test', 'Api\UserController@index');
