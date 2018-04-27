@@ -29,11 +29,7 @@ class Controller extends BaseController
             }
 
             // 关键字逗号不允许随意使用
-            if (str_contains($value, ',')) {
-                $query->whereIn($item, explode(',', $value));
-            } else {
-                $query->where($item, '=', $value);
-            }
+            $query->whereIn($item, explode(',', $value));
         }
 
         if ($this->isBlacklist($query)) {
