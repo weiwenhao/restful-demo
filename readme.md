@@ -1,6 +1,8 @@
-### api文档待完善
+### api文档
+http://www.xiaoyaoji.cn/share/GzF0EpXtJ
 
-### 数据字典 
+### api测试地址 待完善
 
-  `category 分类 -> goal 目标 -> diary 日记`  这样一个简单的数据结构关联关系.更多请查看迁移文件
+### 功能测试 待完善
 
+### auth认证 待完善
