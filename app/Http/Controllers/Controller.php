@@ -37,11 +37,11 @@ class Controller extends BaseController
         }
 
         if ($this->isBlacklist($query)) {
-            return new LengthAwarePaginator([], 0, request()->get('pre_page', 15));
+            return new LengthAwarePaginator([], 0, request()->get('per_page', 15));
         }
 
         //分页
-        return $query->paginate(request()->get('pre_page', 15))->appends(request()->except('page'));
+        return $query->paginate(request()->get('per_page', 15))->appends(request()->except('page'));
     }
 
     /**
@@ -53,7 +53,7 @@ class Controller extends BaseController
     {
         $limit = 100;
 
-        if (request('pre_page') && request('pre_page') < $limit) {
+        if (request('per_page') && request('per_page') < $limit) {
             return false;
         }
 
